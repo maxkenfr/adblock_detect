@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TEST ADBLOCK</title>
+    <style media="screen">
+      .hide{
+        display: none;
+        color: red;
+      }
+      .show{
+        display: inline;
+        color: green;
+      }
+      .hasAdblock > .hide{
+        display: inline;
+      }
+      .hasAdblock > .show{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="hide">ADBLOCK IS ACTIVE</span>
+    <span class="show">ADBLOCK IS DEACTIVATE</span>
+    <script type="text/javascript">
+    var hasAdblock = document.createElement('div');
+    hasAdblock.innerHTML = '&nbsp;';
+    hasAdblock.className = 'adsbox';
+    document.body.appendChild(hasAdblock);
+    window.setTimeout(function() {
+      if (hasAdblock.offsetHeight === 0) {
+        document.body.classList.add('hasAdblock');
+      }
+      hasAdblock.remove();
+    }, 100);
+    </script>
+  </body>
+</html>
